@@ -8,12 +8,16 @@ public class main {
 
 		// BUBLE SORT INT
 
-		int quantidade = 10000; // QUANTIDADE DE REGISTROS
+		int contaIf = 0;
+		int contaFor = 0;
+
+		int quantidade = 1000; // QUANTIDADE DE REGISTROS
 
 		int[] vet = new int[quantidade];
 
 		for (int i = 0; i < vet.length; i++) {
 			vet[i] = (int) (Math.random() * quantidade);
+
 		}
 
 		System.out.println("Quantidade de registros : " + vet.length);
@@ -23,9 +27,11 @@ public class main {
 
 		// TEMPO INICIAL E FINAL PARA MEDIR O TEMPO DE EXECUÇÃO
 		long tempoInicial = System.currentTimeMillis();
-		for (i = 0; i < 5; i++) {
-			for (int j = 0; j < 4; j++) {
+		for (i = 0; i < vet.length; i++) {
+			for (int j = 0; j < (vet.length - 1); j++) {
+				contaFor++;
 				if (vet[j] > vet[j + 1]) {
+					contaIf++;
 					aux = vet[j];
 					vet[j] = vet[j + 1];
 					vet[j + 1] = aux;
@@ -34,7 +40,8 @@ public class main {
 		}
 
 		long tempoFinal = System.currentTimeMillis();
-		System.out.println("BUBLE SORT Executado em = " + (tempoFinal - tempoInicial) + " ms");
+		System.out.println("Quantidade de interações: " + contaFor + " " + "Quantidade de comparacoes: " + contaIf + " "
+				+ "BUBLE SORT Executado em = " + (tempoFinal - tempoInicial) + " ms");
 
 //		INSERTIONSORT
 		int j;
